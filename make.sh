@@ -6,7 +6,8 @@
 #
 
 set -e
-JOB=`sed -n "N;/processor/p" /proc/cpuinfo|wc -l`
+# JOB=`sed -n "N;/processor/p" /proc/cpuinfo|wc -l`
+JOB=$UBOOT_JOB
 SUPPORT_LIST=`ls configs/*[r,p][x,v,k][0-9][0-9]*_defconfig`
 CMD_ARGS=$1
 
@@ -803,5 +804,4 @@ clean_files
 make PYTHON=python2 ${ARG_SPL_FWVER} ${ARG_FWVER} CROSS_COMPILE=${TOOLCHAIN} all --jobs=${JOB}
 pack_images
 finish
-echo ${TOOLCHAIN}
 date
